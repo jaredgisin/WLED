@@ -1,3 +1,6 @@
+#ifndef HTTP_CONST_H
+#define HTTP_CONST_H
+
 /* HTTP Status Codes */
 #define HTTP_STATUS_OK 200
 #define HTTP_STATUS_BAD_REQUEST 400
@@ -17,6 +20,7 @@
 #define HTTP_HDR_CONTENT_TYPE "Content-Type"
 #define HTTP_HDR_CONTENT_ENCODING "Content_Encoding"
 #define HTTP_HDR_ETAG "Etag"
+#define HTTP_HDR_IF_NONE_MATCH "If-None-Match"
 #define HTTP_HDR_HOST "Host"
 #define HTTP_HDR_LOCATION "Location"
 
@@ -25,3 +29,5 @@
 #define CT_TEXT_PLAIN "text/plain"
 #define CT_TEXT_HTML "text/html"
 #define CT_IMAGE_XICON "image/x-icon"
+
+#endif 
