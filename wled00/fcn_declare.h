@@ -241,11 +241,6 @@ String settingsProcessor(const String& var);
 String dmxProcessor(const String& var);
 void serveSettings(AsyncWebServerRequest* request, bool post = false);
 
-//ws.cpp
-void handleWs();
-void wsEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventType type, void * arg, uint8_t *data, size_t len);
-void sendDataWs(AsyncWebSocketClient * client = nullptr);
-
 //xml.cpp
 void XML_response(AsyncWebServerRequest *request, char* dest = nullptr);
 void URL_response(AsyncWebServerRequest *request);

@@ -1,4 +1,5 @@
 #include "wled.h"
+#include "ws.h"
 
 /*
  * WebSockets server for bidirectional communication
@@ -9,7 +10,6 @@ uint16_t wsLiveClientId = 0;
 unsigned long wsLastLiveTime = 0;
 //uint8_t* wsFrameBuffer = nullptr;
 
-#define WS_LIVE_INTERVAL 40
 
 void wsEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventType type, void * arg, uint8_t *data, size_t len)
 {

@@ -1,4 +1,5 @@
 #include "wled.h"
+#include "ws.h"
 
 /*
  * LED methods

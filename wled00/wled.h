@@ -77,7 +77,6 @@
   #include "my_config.h"
 #endif
 
-#include <ESPAsyncWebServer.h>
 #include <EEPROM.h>
 #include <WiFiUdp.h>
 #include <DNSServer.h>
@@ -537,7 +536,8 @@ WLED_GLOBAL bool doPublishMqtt _INIT(false);
 // server library objects
 WLED_GLOBAL AsyncWebServer server _INIT_N(((80)));
 #ifdef WLED_ENABLE_WEBSOCKETS
-WLED_GLOBAL AsyncWebSocket ws _INIT_N((("/ws")));
+extern AsyncWebSocket ws;
+//WLED_GLOBAL AsyncWebSocket ws _INIT_N((("/ws")));
 #endif
 WLED_GLOBAL AsyncClient* hueClient _INIT(NULL);
 WLED_GLOBAL AsyncMqttClient* mqtt _INIT(NULL);

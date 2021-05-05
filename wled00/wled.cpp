@@ -1,11 +1,14 @@
 #define WLED_DEFINE_GLOBAL_VARS //only in one source file, wled.cpp!
 #include "wled.h"
+#include "ws.h"
 #include <Arduino.h>
 
 #if defined(ARDUINO_ARCH_ESP32) && defined(WLED_DISABLE_BROWNOUT_DET)
 #include "soc/soc.h"
 #include "soc/rtc_cntl_reg.h"
 #endif
+
+AsyncWebSocket ws = AsyncWebSocket("/ws");
 
 /*
  * Main WLED class implementation. Mostly initialization and connection logic
