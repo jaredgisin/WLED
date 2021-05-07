@@ -1,6 +1,5 @@
 #ifndef WLED_H
 #define WLED_H
-#include "common.h"
 /*
    Main sketch, global variable declarations
    @title WLED project sketch
@@ -50,6 +49,9 @@
 
 // Library inclusions.
 #include <Arduino.h>
+#include "common.h"
+
+// board-specific inclusions
 #ifdef ESP8266
   #include <ESP8266mDNS.h>
   #include <ESPAsyncTCP.h>
@@ -92,6 +94,7 @@
   // #define ESPALEXA_DEBUG
   #include "src/dependencies/espalexa/Espalexa.h"
 #endif
+
 #ifndef WLED_DISABLE_BLYNK
   #include "src/dependencies/blynk/BlynkSimpleEsp.h"
 #endif

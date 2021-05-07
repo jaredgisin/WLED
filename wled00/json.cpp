@@ -1,6 +1,6 @@
 #include "wled.h"
-#include "version.h"
 #include "palettes.h"
+#include "version.h"
 
 /*
  * JSON API (De)serialization
