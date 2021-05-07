@@ -1,4 +1,5 @@
 #include "wled.h"
+#include "version.h"
 
 /*
  * Serializes and parses the cfg.json and wsec.json settings files, stored in internal FS.
@@ -400,7 +401,7 @@ void serializeConfig() {
   rev.add(1); //major settings revision
   rev.add(0); //minor settings revision
 
-  doc[F("vid")] = VERSION;
+  doc[F("vid")] = VERSION_CODE;
 
   JsonObject id = doc.createNestedObject("id");
   id[F("mdns")] = cmDNS;

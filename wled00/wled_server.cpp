@@ -1,5 +1,7 @@
 #include "wled.h"
+#include "version.h"
 #include "http.h"
+
 
 /*
  * Integrated HTTP web server page declarations
@@ -104,7 +106,7 @@ void initServer()
   server.addHandler(handler);
 
   server.on("/version", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(HTTP_STATUS_OK, CT_TEXT_PLAIN, (String)VERSION);
+    request->send(HTTP_STATUS_OK, CT_TEXT_PLAIN, (String)VERSION_CODE);
     });
     
   server.on("/uptime", HTTP_GET, [](AsyncWebServerRequest *request){
@@ -239,7 +241,7 @@ void serveIndexOrWelcome(AsyncWebServerRequest *request)
 bool handleIfNoneMatchCacheHeader(AsyncWebServerRequest* request)
 {
   AsyncWebHeader* header = request->getHeader(HTTP_HDR_IF_NONE_MATCH);
-  if (header && header->value() == String(VERSION)) {
+  if (header && header->value() == String(VERSION_CODE)) {
     request->send(304);
     return true;
   }
@@ -249,7 +251,7 @@ bool handleIfNoneMatchCacheHeader(AsyncWebServerRequest* request)
 void setStaticContentCacheHeaders(AsyncWebServerResponse *response)
 {
   response->addHeader(F(HTTP_HDR_CACHE_CONTROL),"no-cache");
-  response->addHeader(F(HTTP_HDR_ETAG), String(VERSION));
+  response->addHeader(F(HTTP_HDR_ETAG), String(VERSION_CODE));
 }
 
 void serveIndex(AsyncWebServerRequest* request)

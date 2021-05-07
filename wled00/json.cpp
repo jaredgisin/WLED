@@ -1,5 +1,5 @@
 #include "wled.h"
-
+#include "version.h"
 #include "palettes.h"
 
 /*
@@ -426,7 +426,7 @@ int getSignalQuality(int rssi)
 void serializeInfo(JsonObject root)
 {
   root[F("ver")] = versionString;
-  root[F("vid")] = VERSION;
+  root[F("vid")] = VERSION_CODE;
   //root[F("cn")] = WLED_CODENAME;
 
   JsonObject leds = root.createNestedObject("leds");

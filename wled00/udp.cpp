@@ -1,4 +1,5 @@
 #include "wled.h"
+#include "version.h"
 
 /*
  * UDP sync notifier / Realtime / Hyperion / TPM2.NET
@@ -450,7 +451,7 @@ void sendSysInfoUDP()
   #endif
   data[39] = ip[3]; // unit ID == last IP number
 
-  uint32_t build = VERSION;
+  uint32_t build = VERSION_CODE;
   for (byte i=0; i<sizeof(uint32_t); i++)
     data[40+i] = (build>>(8*i)) & 0xFF;
 

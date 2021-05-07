@@ -1,14 +1,12 @@
 #ifndef WLED_H
 #define WLED_H
+#include "common.h"
 /*
    Main sketch, global variable declarations
    @title WLED project sketch
    @version 0.12.1-b1
    @author Christian Schwinne
  */
-
-// version code in format yymmddb (b = daily build)
-#define VERSION 2104220
 
 //uncomment this if you have a "my_config.h" file you'd like to use
 //#define WLED_USE_MY_CONFIG
@@ -148,7 +146,7 @@
 #endif
 
 // GLOBAL VARIABLES
-// both declared and defined in header (solution from http://www.keil.com/support/docs/1868.htm)
+// both declared and defined in header (solution from https://developer.arm.com/documentation/ka002428/latest)
 //
 //e.g. byte test = 2 becomes WLED_GLOBAL byte test _INIT(2);
 //     int arr[]{0,1,2} becomes WLED_GLOBAL int arr[] _INIT_N(({0,1,2}));
@@ -166,16 +164,9 @@
 # define _INIT_N(x) UNPACK x
 #endif
 
-#define STRINGIFY(X) #X
-#define TOSTRING(X) STRINGIFY(X)
-
-#ifndef WLED_VERSION
-  #define WLED_VERSION "dev"
-#endif
 
 // Global Variable definitions
-WLED_GLOBAL char versionString[] _INIT(TOSTRING(WLED_VERSION));
-#define WLED_CODENAME "Hikari"
+// WLED_GLOBAL char versionString[] _INIT(TOSTRING(WLED_VERSION));
 
 // AP and OTA default passwords (for maximum security change them!)
 WLED_GLOBAL char apPass[65]  _INIT(DEFAULT_AP_PASS);
@@ -564,29 +555,7 @@ WLED_GLOBAL UsermodManager usermods _INIT(UsermodManager());
   WLED_GLOBAL bool ledStatusState _INIT(0); // the current LED state
 #endif
 
-// enable additional debug output
-#ifdef WLED_DEBUG
-  #ifndef ESP8266
-  #include <rom/rtc.h>
-  #endif
-  #define DEBUG_PRINT(x) Serial.print(x)
-  #define DEBUG_PRINTLN(x) Serial.println(x)
-  #define DEBUG_PRINTF(x...) Serial.printf(x)
-#else
-  #define DEBUG_PRINT(x)
-  #define DEBUG_PRINTLN(x)
-  #define DEBUG_PRINTF(x...)
-#endif
-
-#ifdef WLED_DEBUG_FS
-  #define DEBUGFS_PRINT(x) Serial.print(x)
-  #define DEBUGFS_PRINTLN(x) Serial.println(x)
-  #define DEBUGFS_PRINTF(x...) Serial.printf(x)
-#else
-  #define DEBUGFS_PRINT(x)
-  #define DEBUGFS_PRINTLN(x)
-  #define DEBUGFS_PRINTF(x...)
-#endif
+#include "debug.h"
 
 // debug macro variable definitions
 #ifdef WLED_DEBUG

@@ -1,4 +1,5 @@
 #include "wled.h"
+#include "version.h"
 
 /*
  * Sending XML status files to client
@@ -489,7 +490,7 @@ void getSettingsJS(byte subPage, char* dest)
     olen -= 2; //delete ";
     oappend(versionString);
     oappend(SET_F(" (build "));
-    oappendi(VERSION);
+    oappendi(VERSION_CODE);
     oappend(SET_F(")\";"));
   }
   
